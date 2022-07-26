@@ -30,15 +30,10 @@ router.post('/addMovie', (req, res) => {
     let classification = req.body.classification;
     let duration = req.body.duration;
     Movie.create(
-<<<<<<< HEAD
         {
-            title, story, classification, language, subtitles,
+            title, story, classification, duration, language, subtitles,
             dateRelease
         }
-=======
-        { title, story, classification, duration, language, subtitles,
-dateRelease }
->>>>>>> df79e96b61dcbe4972c93c52c0001e59d3d99e51
     )
         .then((movie) => {
             console.log(movie.toJSON());
@@ -74,9 +69,9 @@ router.post('/editMovie/:id', (req, res) => {
         .catch(err => console.log(err));
 });
 
-router.get('/deleteMovie/:id', async function(req, res) {
+router.get('/deleteMovie/:id', async function (req, res) {
     try {
-            let movie = await Movie.findByPk(req.params.id);
+        let movie = await Movie.findByPk(req.params.id);
         if (!movie) {
             flashMessage(res, 'error', 'Movie not found');
             res.redirect('/video/listVideos');
@@ -92,7 +87,7 @@ router.get('/deleteMovie/:id', async function(req, res) {
         res.redirect('/movie/listMovies');
     }
     catch (err) {
-        console.log(err);   
+        console.log(err);
     }
 });
 
